@@ -11,34 +11,39 @@
              background-size: cover;
             }
 
-        .container{
+        .div1{
             max-width: 400px;
             margin: auto;
                   }
+
     </style>
 </head>
 <body>
-      <div class="container">
-           <h1 class="text-center" id="formtitle">Login</h1>
+      <div class="div1 bg-light-subtle">
+           <h1 class="text-center bg-primary mt-5 py-3 fw-bold text-light" id="formtitle">Login</h1>
 
-           <form id="loginform">
-           <div class="form-group">
-           User ID  <input id="username" class="form-control" type="text" placeholder="register username" required>
+           <form id="form" class="mx-3">
+
+           <div class="form-group my-2">
+            <label for="username">Username</label>
+            <input id="username" class="form-control" type="text" placeholder="registered username" required>
+           </div> 
+
+           <div class="form-group my-2">
+           <label for="password">Password</label>
+           <input id="password" class="form-control" type="password" placeholder="registered password" required>
            </div>
 
-           <div class="form-group">
-           Password  <input id="password" class="form-control" type="password" placeholder="register password" required>
-           </div>
-
-           <div class="form-group">
-           Confirm Password  <input id="confirmpassword" class="form-control" type="password" placeholder="register password" required>
+           <div class="form-group my-2" id="confirm">
+           <label for="confirmpassword">Confirm Password</label>
+           <input id="confirmpassword" class="form-control" type="password" placeholder="registered password" required>
            </div>
 
 
-           <button id="sumbitbutton" type="submit" class="btn btn-primary mt-3">Login</button>
+           <button id="submitbutton" type="submit" class="btn btn-primary mt-3 my-2">Login</button>
            </form>
 
-          <p ><a id="linkword" href="#">Don't have an account? Register now</a></p> 
+          <p class="text-center my-2"><a id="change" href="#" >Don't have an account? Register here</a></p> 
 
         </div>
 

@@ -1,59 +1,60 @@
-$(document).ready(function(){
-    const loginForm = $('#loginform');
-    const formTitle = $('#formtitle');
-    const submitBtn = $('#submitbutton');
-    const linkword = $('#linkword');
-    const confirmPasswordGroup = $('#confirmpassword');
-    
-    let isLogin = true;
+$(document).ready(function () {
+    var isLogin = true;
 
-    if (localStorage.getItem('loggedInUser')) {
-        window.location.href = 'index.html';
-    }
-    
-    loginForm.on('submit', function(event) {
-        event.preventDefault(); 
-        const username = $('#username').val();
-        const password = $('#password').val()
+    $("#confirm").hide();
+
+    $("#change").click(function (event) {
+        event.preventDefault();
+        isLogin = !isLogin;
 
         if (isLogin) {
-            const storedUser = JSON.parse(localStorage.getItem(username));
-            if (storedUser && storedUser.password === password) {
-                localStorage.setItem('loggedInUser', username);
-                window.location.href = 'index.html'; 
-            } else {
-                alert('Invalid username or password.');
-            }
-
-        } else{
-            const confirmPassword = $('#confirmpassword').val();
-            if (password !== confirmPassword) {
-                alert('Passwords do not match.');
-                return;
-            }
-            if (localStorage.getItem(username)) {
-                alert('Username already exists.');
-            } else {
-                localStorage.setItem(username, JSON.stringify({ password })); // Store new user
-                alert('Registration successful. Please login.');
-                toggleform();
-            }
+            $("#formtitle").text("Login");
+            $("#submitbutton").text("Login");
+            $("#change").text("Don't have an account? Register here");
+            $("#confirm").hide();
+        } else {
+            $("#formtitle").text("Register");
+            $("#submitbutton").text("Register");
+            $("#change").text("Already registered? Login here");
+            $("#confirm").show();
         }
     });
 
-    linkword.on('click', function(event) {
-        event.preventDefault(); // Prevent default link behavior
-        toggleform(); // Call the function to switch forms
+    $("#form").submit(function (event) {
+        event.preventDefault();
+
+        var username = $("#username").val();
+        var password = $("#password").val();
+
+        var users = JSON.parse(localStorage.getItem("users")) || {};
+
+        if (isLogin) {
+            if (users[username] && users[username] === password) {
+                localStorage.setItem('loggedInUser', username);
+                window.location.href = 'main.html';
+            } else {
+                alert('Invalid username or password.');
+            }
+        } else {
+            var confirmPassword = $("#confirmpassword").val();
+
+            if (password !== confirmPassword) {
+                alert("Passwords do not match.");
+                return;
+            }
+
+            if (users[username]) {
+                alert("Username already exists.");
+                return;
+            }
+
+            // Add new user to the users object
+            users[username] = password;
+            localStorage.setItem("users", JSON.stringify(users));
+            alert("Registration successful. Please login.");
+
+            // Switch back to login form
+            isLogin = true;
+        }
     });
-
-
-    function toggleform(){
-        isLogin=!isLogin;
-        formTitle.text(isLogin ? 'Login' : 'Register');
-        submitBtn.text(isLogin ? 'Login' : 'Register');
-        linkword.text(isLogin ? "Don't have an account? Register now" : "Already Register? Login here");
-        confirmPasswordGroup.toggle(!isLogin);
-        loginForm[0].reset();
-    }
-
 });

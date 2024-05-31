@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Expense Tracker - Authentication</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-image: url("coin.jpg");
+      background-size: cover;
+    }
+    h2 {
+      text-align: center;
+    }
+    .auth-container {
+      width: 100%;
+      max-width: 400px;
+      padding: 20px;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .auth-container h2 {
+      margin-bottom: 20px;
+    }
+    .toggle-link {
+      display: block;
+      text-align: center;
+      margin-top: 10px;
+      cursor: pointer;
+      color: #007bff;
+    }
+    .toggle-link:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="auth-container">
+    <div id="login-page">
+      <h2>Login</h2>
+      <form id="login-form">
+        <div class="form-group">
+          <label for="login-username">Username</label>
+          <input type="text" class="form-control" id="login-username" required>
+        </div>
+        <div class="form-group">
+          <label for="login-password">Password</label>
+          <input type="password" class="form-control" id="login-password" required>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Login</button>
+      </form>
+      <span class="toggle-link" id="show-register">Don't have an account? Register</span>
+    </div>
+
+    <div id="register-page" style="display: none;">
+      <h2>Register</h2>
+      <form id="register-form">
+        <div class="form-group">
+          <label for="register-username">Username</label>
+          <input type="text" class="form-control" id="register-username" required>
+        </div>
+        <div class="form-group">
+          <label for="register-password">Password</label>
+          <input type="password" class="form-control" id="register-password" required>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Register</button>
+      </form>
+      <span class="toggle-link" id="show-login">Already have an account? Login</span>
+    </div>
+  </div>
+
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="auth.js"></script>
+</body>
+</html>

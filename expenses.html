@@ -37,8 +37,17 @@
           <input type="date" class="form-control" id="date" required>
         </div>
         <div class="form-group">
-          <label for="description">Description</label>
-          <input type="text" class="form-control" id="description" required>
+          <label for="category">Category</label>
+          <select class="form-control" id="category" required>
+            <option value="Food">Food</option>
+            <option value="Transport">Transport</option>
+            <option value="Daily Item">Daily Item</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <div class="form-group" id="other-category-group" style="display: none;">
+          <label for="other-category">Please specify</label>
+          <input type="text" class="form-control" id="other-category">
         </div>
         <button type="submit" class="btn btn-primary">Add Expense</button>
       </form>
@@ -51,7 +60,7 @@
           <tr>
             <th>Amount</th>
             <th>Date</th>
-            <th>Description</th>
+            <th>Category</th>
             <th>Actions</th>
           </tr>
         </thead>
@@ -64,6 +73,14 @@
     <div id="view-summary" class="mt-4">
       <h2>Expense Summary</h2>
       <p>Total Expenses: <span id="total-expenses">0</span></p>
+      <div class="form-group">
+        <label for="chartType">Select Chart Type</label>
+        <select id="chartType" class="form-control">
+          <option value="bar">Bar Chart</option>
+          <option value="line">Line Chart</option>
+          <option value="pie">Pie Chart</option>
+        </select>
+      </div>
       <canvas id="expenseChart"></canvas>
     </div>
   </div>

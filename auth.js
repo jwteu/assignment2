@@ -28,6 +28,7 @@ $(document).ready(function() {
         }
     });
 
+    
     $('#login-form').on('submit', function(e) {
         e.preventDefault();
         const username = $('#login-username').val();
